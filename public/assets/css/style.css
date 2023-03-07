@@ -1,0 +1,72 @@
+/* gerais */
+* {
+    font-family: 'Roboto';
+}
+
+
+.msg {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Event create page */
+#event-create-container {
+    padding: 30px;
+}
+
+#event-create-container label {
+    font-weight: bold;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea {
+    font-size: 12px;
+}
+
+/* footew=r */
+footer {
+    text-align: center;
+    background-color: #353E47;
+    color: #FFF;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
+
+
+.nav-menu {
+    z-index: 1;
+}
+
+footer p {
+    margin-bottom: 0;
+    z-index: -1;
+}
+
+.collapse.nav.flex-column.ms-1{
+    padding-left: 30px;
+}
+
+.dropdown.pb-4{
+    bottom: 10px;
+}
+
+.topo-title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 50px;
+}
+
+#event-create-container {
+    margin-top: 30px;
+}
