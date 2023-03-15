@@ -13,20 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100);
-            $table->string('email', 100);
-            $table->string('fone', 20);
-            $table->string('cpf', 20);
-            $table->date('date_of_birth');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('fone', 20)->after('name'); // Ordenado após a coluna "email";
+            $table->string('cpf', 20)->after('fone');
+            $table->date('date_of_birth')->after('cpf');
 
-            $table->unsignedBigInteger('profile_type_id');
+            $table->unsignedBigInteger('profile_type_id')->after('date_of_birth');
             $table->foreign('profile_type_id')->references('id')->on('profile_type');
             
-            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('store_id')->after('profile_type_id');
             $table->foreign('store_id')->references('id')->on('store');
-            $table->timestamps();
         });
     }
 
@@ -37,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->datetime('date_sale', 100);
+            $table->datetime('date_sale');
             $table->decimal('total', 10, 2);
             $table->integer('form_of_payment')->comment("1 for cash payment, 2 for debit card payment, 3 for credit card payment and 4 for payment via pix");
             $table->integer('status')->comment("1 for completed purchase and 0 for canceled purchase");

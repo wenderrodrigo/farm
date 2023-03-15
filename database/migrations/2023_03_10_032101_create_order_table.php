@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('clients');
 
-            $table->integer('status', 1)->comment('1 for active and 2 for inactive');
+            $table->integer('status')->comment('1 for active and 2 for inactive');
             
             $table->decimal('total', 10, 2);
             $table->timestamps();

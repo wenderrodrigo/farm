@@ -18,11 +18,9 @@ return new class extends Migration
 
             $table->decimal('amount', 10, 2);
             $table->decimal('unit_price', 10, 2);
-
-            $table->unsignedBigInteger('client_id');
             
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('product');
+            $table->foreign('product_id')->references('id')->on('products');
             
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('order');

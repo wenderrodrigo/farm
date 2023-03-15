@@ -19,13 +19,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('fone', 20);
             $table->string('cpf_cnpj', 20);
-            $table->integer('type_person', 1)->comment('1 if the customer is an individual and 2 when it is a legal entity');
+            $table->integer('type_person_id');
 
             $table->unsignedBigInteger('address_id');
-            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->foreign('address_id')->references('id')->on('address');
             
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->nullable()->default(null)->onUpdate('CURRENT_TIMESTAMP');
+            //$table->timestamp('created_at')->useCurrent();
+            //$table->timestamp('updated_at')->useCurrent()->nullable()->default(null)->onUpdate('CURRENT_TIMESTAMP');
 
             $table->timestamps();
         });

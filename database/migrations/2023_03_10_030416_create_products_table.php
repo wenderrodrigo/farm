@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('bar_code', 20);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->nullable()->default(null)->onUpdate('CURRENT_TIMESTAMP');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 
