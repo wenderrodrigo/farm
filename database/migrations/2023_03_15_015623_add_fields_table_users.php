@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('fone', 20)->after('name'); // Ordenado após a coluna "email";
+            $table->string('fone', 20)->after('name'); // Ordenado após a coluna "name";
             $table->string('cpf', 20)->after('fone');
             $table->date('date_of_birth')->after('cpf');
 
@@ -34,7 +34,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            // $table->dropColumn('fone');
+            // $table->dropColumn('cpf');
+            // $table->dropColumn('date_of_birth');
+            $table->dropForeign(['profile_type_id']);
+            $table->dropForeign(['store_id']);
         });
     }
 };
