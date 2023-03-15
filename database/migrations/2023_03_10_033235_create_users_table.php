@@ -23,6 +23,9 @@ return new class extends Migration
 
             $table->unsignedBigInteger('profile_type_id');
             $table->foreign('profile_type_id')->references('id')->on('profile_type');
+            
+            $table->unsignedBigInteger('store_id');
+            $table->foreign('store_id')->references('id')->on('store');
             $table->timestamps();
         });
     }
