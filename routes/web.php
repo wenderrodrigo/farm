@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CountryController;
+use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
@@ -32,3 +34,14 @@ Route::post('/produtos', [ProdutosController::class, 'index']);
 Route::get('/produtos/excluir/{id}', [ProdutosController::class, 'excluir']);
 
 
+
+// Route::get('/coutry/{name}', function(Country $country){
+
+//     return response($country, 200)
+//                   ->header('Content-Type', 'text/plain');
+// }); //Rota para retornar o pais conforme valor recebido
+
+// Route::get('/coutry', function(){
+//     return response('Hello World', 200)
+//                   ->header('Content-Type', 'text/plain');
+// }); //Rota para retornar o pais conforme valor recebido

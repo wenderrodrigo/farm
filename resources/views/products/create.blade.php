@@ -98,6 +98,7 @@
             <div class="col-md-3 mb-3">
                 <label for="pais" class="form-label">País de Origem</label>
                 <input type="text" class="form-control" id="pais" name="pais">
+                <input type="hidden" id="number_pais" name="number_pais">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="vendaOnline" class="form-label">Informações para Venda Online</label>
