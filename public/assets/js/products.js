@@ -28,45 +28,83 @@ $(document).ready(function() {
      }
   });
 
-
-  // $("#pais").on("keypress",function(){
-
-  //   $.get("/api/coutry/"+this.value)
-  //   .done(function( data ) {
-
-  //     var availableTags = data["country"]
-
-  //     console.log(availableTags[0].id);
-
-  //   });
-  // });
-  
-    var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-      ];
-      $( "#fabricante" ).autocomplete({
-        source: availableTags
+  $( "#categoria" ).autocomplete({
+    source :function( request, response ) {
+      $.ajax({
+         url: "/api/categoryProducts/"+request.term,
+         dataType: "json",
+         data: {
+            q: request.term
+         },
+         success: function( data ) {
+           response($.map(data, function(item) {
+                   return {
+                       label : item.name+" ("+item.code+")",
+                       value : item.id
+                   };
+             }));
+         }
       });
+     },
+     select: function (event, ui) {
+           $("#categoria").val(ui.item.label);
+           $("#categoriaHidden").val(ui.item.value);
+           return false;
+     }
+  });
+
+  
+  $( "#fabricante" ).autocomplete({
+    source :function( request, response ) {
+      $.ajax({
+         url: "/api/manufacturerProducts/"+request.term,
+         dataType: "json",
+         data: {
+            q: request.term
+         },
+         success: function( data ) {
+           response($.map(data, function(item) {
+                   return {
+                       label : item.name+" ("+item.code+")",
+                       value : item.id
+                   };
+             }));
+         }
+      });
+     },
+     select: function (event, ui) {
+           $("#fabricante").val(ui.item.label);
+           $("#fabricanteHidden").val(ui.item.value);
+           return false;
+     }
+  });
+  
+    // var availableTags = [
+    //     "ActionScript",
+    //     "AppleScript",
+    //     "Asp",
+    //     "BASIC",
+    //     "C",
+    //     "C++",
+    //     "Clojure",
+    //     "COBOL",
+    //     "ColdFusion",
+    //     "Erlang",
+    //     "Fortran",
+    //     "Groovy",
+    //     "Haskell",
+    //     "Java",
+    //     "JavaScript",
+    //     "Lisp",
+    //     "Perl",
+    //     "PHP",
+    //     "Python",
+    //     "Ruby",
+    //     "Scala",
+    //     "Scheme"
+    //   ];
+    //   $( "#fabricante" ).autocomplete({
+    //     source: availableTags
+    //   });
 
 });

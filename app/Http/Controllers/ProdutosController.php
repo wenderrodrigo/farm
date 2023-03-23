@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Products;
+use App\Models\ManufacturerProducts;
+use App\Models\CategoryProducts;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -38,6 +41,35 @@ class ProdutosController extends Controller
 
     public function create(){
         return view('products.create');
+    }
+    
+    public function store(Request $request){
+
+        $event = new Products;
+
+        $event->title = $request->title;
+        $event->city = $request->city;
+        $event->private = $request->private;
+        $event->description = $request->description;
+
+
+        // Image Upload
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+
+            $requestImage->move(public_path('assets/img/events'), $imageName);
+
+            $event->image = $imageName;
+        }
+
+        $event->save();
+        
+        return redirect('/')->with('msg', 'Evento criado com sucesso!');
     }
 
     public function excluir($id){

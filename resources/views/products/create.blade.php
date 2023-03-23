@@ -12,7 +12,7 @@
   <h1 class="text-center text-white">Cadastro de produto</h1>
 </div>
 <div id="event-create-container" class="col-md-10">
-    <form action="/events" method="POST" enctype="multipart/form-data">
+    <form action="/products" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">
@@ -23,10 +23,12 @@
             <div class="col-md-3 mb-3">
                 <label for="fabricante" class="form-label">Fabricante</label>
                 <input type="text" class="form-control" id="fabricante" name="fabricante">
+                <input type="hidden" id="fabricanteHidden" name="fabricanteHidden">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="categoria" class="form-label">Categoria</label>
                 <input type="text" class="form-control" id="categoria" name="categoria">
+                <input type="hidden" id="categoriaHidden" name="categoriaHidden">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="principio_ativo" class="form-label">Princípio ativo</label>
