@@ -31,7 +31,7 @@ $(document).ready(function() {
   $( "#categoria" ).autocomplete({
     source :function( request, response ) {
       $.ajax({
-         url: "/api/categoryProducts/"+request.term,
+         url: "/api/productCategory/"+request.term,
          dataType: "json",
          data: {
             q: request.term

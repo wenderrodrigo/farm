@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
+
 class EventController extends Controller
 {
     public function index(){
@@ -42,10 +43,7 @@ class EventController extends Controller
 
             $event->image = $imageName;
         }
-
-        $event->save();
-        
-        return redirect('/')->with('msg', 'Evento criado com sucesso!');
+ 
     }
 
     public function show($id){

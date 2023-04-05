@@ -37,8 +37,11 @@ return new class extends Migration
             $table->unsignedBigInteger('countries_id')->after('promotions');
             $table->foreign('countries_id')->references('id')->on('countries');
             
-            $table->unsignedBigInteger('product_category_id')->after('countries_id');
-            $table->foreign('product_category_id')->references('id')->on('product_category');
+            $table->unsignedBigInteger('manufacturers_id')->after('countries_id');
+            $table->foreign('manufacturers_id')->references('id')->on('manufacturer_products');
+            
+            $table->unsignedBigInteger('product_category_id')->after('manufacturers_id');
+            $table->foreign('product_category_id')->references('id')->on('product_categories');
 
         });
     }
@@ -52,6 +55,7 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign(['countries_id']);
+            $table->dropForeign(['manufacturers_id']);
             $table->dropForeign(['product_category_id']);
         });
     }

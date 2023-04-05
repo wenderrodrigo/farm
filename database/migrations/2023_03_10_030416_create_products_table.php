@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->decimal('price',10,2);
-            $table->text('descrition');
+            $table->text('description');
             $table->string('bar_code', 20);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->nullable()->default(null)->onUpdate('CURRENT_TIMESTAMP');

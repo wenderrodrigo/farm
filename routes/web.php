@@ -5,7 +5,7 @@ use App\Models\Country;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +27,14 @@ Route::get('/events/create', [EventController::class, 'create']); //Rota para ad
 Route::get('/events/{id}', [EventController::class, 'show']); //Rota para msotrar apenas 1 registro especifico
 Route::post('/events', [EventController::class, 'store']); // Rota para enviar os dados do banco
 
-Route::get('/produtos', [ProdutosController::class, 'create']);
+Route::get('/produtos', [ProductController::class, 'create']);
 
-Route::post('/produtos', [ProdutosController::class, 'index']);
+//Route::post('/produtos', [ProductController::class, 'index']);
 
-Route::get('/produtos/excluir/{id}', [ProdutosController::class, 'excluir']);
+Route::post('/products', [ProductController::class, 'store']); //Rota para retornar os fabricantes
+
+
+Route::get('/produtos/excluir/{id}', [ProductController::class, 'excluir']);
 
 
 

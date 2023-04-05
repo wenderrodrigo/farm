@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Criar Evento')
+@section('title', 'Criar Produto')
 
 @section('content')
 
@@ -14,7 +14,6 @@
 <div id="event-create-container" class="col-md-10">
     <form action="/products" method="POST" enctype="multipart/form-data">
         @csrf
-
         <div class="row">
             <div class="col-md-3 mb-3">
                 <label for="codigo_barras" class="form-label">Código de barras</label>
@@ -29,6 +28,16 @@
                 <label for="categoria" class="form-label">Categoria</label>
                 <input type="text" class="form-control" id="categoria" name="categoria">
                 <input type="hidden" id="categoriaHidden" name="categoriaHidden">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="name" class="form-label">Nome do produto</label>
+                <input type="text" class="form-control" id="name" name="name">
+                <input type="hidden" id="nameHidden" name="nameHidden">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="description" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="description" name="description">
+                <input type="hidden" id="descriptionHidden" name="descriptionHidden">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="principio_ativo" class="form-label">Princípio ativo</label>
@@ -53,43 +62,45 @@
             </div>
             <div class="col-md-3 mb-3">
                 <label for="restricoes">Restrições de uso:</label>
-                <input type="text" class="form-control" id="restricoes" placeholder="Informações sobre restrições de uso">
+                <input type="text" class="form-control" id="restricoes" name="restricoes" placeholder="Informações sobre restrições de uso">
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 mb-3">
-                <label for="imagem">Imagem do produto:</label>
-                <input type="text" class="form-control" id="imagem" placeholder="URL da imagem do produto">
+                <div class="form-group">
+                    <label for="image">Imagem do produto</label>
+                    <input type="file" class="form-control-file" id="image" name="image" placeholder="URL da imagem do produto"/>
+                </div>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="lotes">Lotes:</label>
-                <input type="text" class="form-control" id="lotes" placeholder="Registro do número do lote">
+                <input type="text" class="form-control" id="lotes" name="lotes" placeholder="Registro do número do lote">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="registros">Registros:</label>
-                <input type="text" class="form-control" id="registros" placeholder="Informações sobre registros sanitários">
+                <input type="text" class="form-control" id="registros" name="registros" placeholder="Informações sobre registros sanitários">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="peso">Peso ou volume:</label>
-                <input type="text" class="form-control" id="peso" placeholder="Peso ou volume do produto">
+                <input type="text" class="form-control" id="peso" name="peso" placeholder="Peso ou volume do produto">
             </div>
         </div>
         <div class="row">
             <div class="col-md-3 mb-3">
                 <label for="data-fab">Data de fabricação:</label>
-                <input type="date" class="form-control" id="data-fab">
+                <input type="date" class="form-control" id="data-fab" name="data_fab">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="nutricionais">Informações nutricionais:</label>
-                <input type="text" class="form-control" id="nutricionais" placeholder="Informações sobre valores nutricionais">
+                <input type="text" class="form-control" id="nutricionais" name="nutricionais" placeholder="Informações sobre valores nutricionais">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="certificacoes">Certificações:</label>
-                <input type="text" class="form-control" id="certificacoes" placeholder="Informações sobre certificações de qualidade">
+                <input type="text" class="form-control" id="certificacoes" name="certificacoes" placeholder="Informações sobre certificações de qualidade">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="armazenamento">Informações de armazenamento:</label>
-                <input type="text" class="form-control" id="armazenamento" placeholder="Informações sobre as condições de armazenamento">
+                <input type="text" class="form-control" id="armazenamento" name="armazenamento" placeholder="Informações sobre as condições de armazenamento">
             </div>
         </div>
         <div class="row">
@@ -114,23 +125,27 @@
         <div class="row mt-3">
             <div class="col-md-3 mb-3">
                 <label for="margemLucro" class="form-label">Margem de Lucro</label>
-                <input type="text" class="form-control" id="margemLucro" name="margemLucro">
+                <input type="number" class="form-control" id="margemLucro" name="margemLucro">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="price" class="form-label">Preço</label>
+                <input type="number" class="form-control" id="price" name="price">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="estoqueMinimo" class="form-label">Estoque Mínimo</label>
-                <input type="text" class="form-control" id="estoqueMinimo" name="estoqueMinimo">
+                <input type="number" class="form-control" id="estoqueMinimo" name="estoqueMinimo">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="estoqueMaximo" class="form-label">Estoque Máximo</label>
-                <input type="text" class="form-control" id="estoqueMaximo" name="estoqueMaximo">
+                <input type="number" class="form-control" id="estoqueMaximo" name="estoqueMaximo">
             </div>
             <div class="col-md-3 mb-3">
                 <label for="promocoes" class="form-label">Promoções</label>
-                <input type="text" class="form-control" id="promocoes" name="promocoes">
+                <input type="number" class="form-control" id="promocoes" name="promocoes">
             </div>
         </div>
         <div class="d-flex">
-            <button type="button" class="btn btn-primary me-2">Registrar</button>
+            <button type="submit" class="btn btn-primary me-2">Registrar</button>
             <button type="button" class="btn btn-danger me-2">Deletar</button>
             <button type="button" class="btn btn-secondary ms-auto">Limpar</button>
         </div>

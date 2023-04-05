@@ -17,7 +17,7 @@ class ManufacturerProductsController extends Controller
     
     public function show($name){
 
-        $country = DB::table('manufacturers')->where('name','LIKE','%'.$name.'%')
+        $country = DB::table('manufacturer_products')->where('name','LIKE','%'.$name.'%')
         ->get();
 
         return response()->json($country);
